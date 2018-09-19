@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <style media="screen">
+      *{
+        padding: 0;
+        margin: 0;
+        font-family: Arial;
+      }
+      .main-header {
+        padding: 20px 15px 8px 15px;
+      }
+      .logo {
+        text-decoration: none;
+        color: #555555;
+        font-size: 37px;
+      }
+      .nav-horizontal {
+        background-color: #4CAF50;
+        padding: 20px 15px;
+      }
+      .nav-horizontal ul li {
+        display: inline-block;
+      }
+      .nav-horizontal a {
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin-right: 20px;
+        clear: both;
+      }
+      .dropdown .dropdown-content {
+        display: none;
+        margin-top: 8px;
+        background-color: #f1f1f1;
+        width: 250px;
+        height: 200px;
+        padding: 10px 10px;
+        position: absolute;
+        left: 3px;
+
+      }
+      .dropdown .dropdown-button {
+        padding: 20px;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown .tutorial-title{
+        font-size: 20px;
+        font-weight: lighter;
+        letter-spacing: 0.1em;
+        margin: 20px 0 15px 0;
+      }
+      .dropdown ul li a {
+        color: #555555;
+        text-transform: none;
+        font-size: 17px;
+      }
+      .nav-right {
+        float: right;
+        position: relative;
+        right: 1px;
+        top: -17px;
+        font-size: 17px;
+      }
+      .vertical-nav {
+        border-right: 2px solid #C0C0C0;
+        width: 230px;
+        padding: 20px 20px;
+      }
+      .vertical-nav ul {
+        list-style-type: none;
+      }
+      .vertical-nav h4 {
+        margin-bottom: 20px;
+        font-weight: lighter;
+        font-size: 20px;
+      }
+      .vertical-nav a {
+        text-decoration: none;
+        color: #555555;
+        font-size: 17px;
+        font-weight: lighter;
+      }
+      .header-description {
+        float: right;
+        text-transform: uppercase;
+        color: #555555;
+        position: relative;
+        top: 15px;
+        word-spacing: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <a class="logo" href="#">w3schools<span style="color: #4CAF50;">.com<span></a>
+      <div class="header-description">
+        <p>The World's Largest Web Developer Site</p>
+      </div>
+    </header>
+    <nav class="nav-horizontal">
+      <ul>
+        <li>
+          <div class="dropdown">
+            <a class="dropdown-button" href="#">Tutorials</a>
+            <div class="dropdown-content">
+              <h4 class="tutorial-title">HTML and CSS</h4>
+              <ul>
+                <li>
+                  <a href="#">Learn HTML</a>
+                </li>
+                <li>
+                  <a href="#">Learn CSS</a>
+                </li>
+                <li>
+                  <a href="#">Learn Colors</a>
+                </li>
+                <li>
+                  <a href="#">Learn Bootstrap 4</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">References</a></li>
+        <li><a href="#">Examples</a></li>
+      </ul>
+
+      <ul class="nav-right">
+        <li>
+          <a href="#"><i class="fas fa-search"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-globe-asia"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <aside class="vertical-nav">
+      <h4>HTML and CSS</h4>
+      <nav>
+        <ul>
+          <li><a href="#">Learn HTML</a>
+          <li><a href="#">Learn CSS</a>
+          <li><a href="#">Learn Bootstrap 4</a>
+          <li><a href="#">Learn W3.CSS</a>
+        </ul>
+      </nav>
+    </aside>
+  </body>
+</html>
