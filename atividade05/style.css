@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    padding: 10px 20px;
+}
+
+.header .header-title {
+    text-decoration: none;
+    color: #650393;
+}
+
+.btn-menu {
+    display: none;
+}
+
+.side-menu {
+    background-color: #222;
+    width: 20%;
+    height: 100vh;
+    float: left;
+}
+.side-menu .navbar ul {
+    padding-top: 20px;
+}
+.side-menu .navbar ul li {
+    padding: 10px ;
+}
+.side-menu .navbar ul li:hover {
+    background-color: rgb(78, 77, 77);
+}
+.side-menu .navbar ul li a {
+        color: #fff;
+        text-decoration: none; 
+}
+
+.main-content {
+    width: 80%;
+    height: 100vh;
+    background-color: rgba(221, 221, 221, 0.685);
+    float: left;
+    padding: 20px;
+}
+
+.accordion {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.accordion .accordion-title-wrapper {
+    background-color: #f5f5f5;
+    padding: 10px 15px;
+    border-radius: 6px 6px 0 0;
+
+}
+
+.accordion .accordion-title-wrapper h4 {
+    font-size: 16px;
+    cursor: pointer;
+    color: #8f8f8f;
+}
+
+.accordion .accordion-body {
+    background-color: rgb(212, 208, 208);
+    border-radius: 0 0 8px 8px;
+    font-size: 12px;
+}
+
+.close {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.collapse {
+    padding: 15px;
+    max-height: 86px;
+}
+
+@media screen and (max-width: 479px) {
+    .main-content {
+        width: 100%;
+        transition: width 500ms;
+        padding: 10px;
+    }
+
+    .btn-menu {
+        display: inline-block;
+        font-size: 30px;
+        margin-left: 0;
+        margin-top: 0;
+        cursor: pointer;
+        user-select: none;
+        margin-bottom: 20px;
+    }
+
+    .side-menu {
+        width: 0;
+        transition: width 500ms;
+    }
+
+    .collapse {
+        padding: 10px;
+    }
+}
