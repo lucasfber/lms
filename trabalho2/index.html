@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Helvetica", sans-serif;
+        }
+
+        .container {
+            width: 900px;
+            margin: 0 auto;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+
+        clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .content {
+            overflow: auto;
+            background-color: purple;
+        }
+
+        .header {
+            background-color: #ededed;
+            overflow: auto;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .header h3 {
+            float: left;
+            border-right: 1px solid #80888b;
+            padding: 10px 50px 10px 10px;
+
+        }
+
+        .friends-list {
+            background-color: #fff;
+            width: 25%;
+            float: left;
+            height: 100vh;
+        }
+
+        .messages {
+            background-color: #e3d9d1;
+            width: 75%;
+            float: right;
+            height: 100vh;
+        }
+
+        .container .header .friend-name {
+            color: #222;
+            font-size: 20px;
+            margin-left: 20px;
+        }
+
+        .container .header .btn-login {
+            border: none;
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 5px;
+            user-select: none;
+            outline: 0;
+            float: right;
+            position: relative;
+            top: 8px;
+            background-color: #25D366;
+            right: 20px;
+            color: #fff;
+        }
+
+        .container .header .btn-login:active {
+            background-color: rgb(33, 201, 94);
+            color: #fff;
+
+        }
+
+        .friend-name {
+            display: inline-block;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        .group {
+            background-color: #fff;
+            /* background-color: #e8ebea; */
+            height: 52px;
+            position: relative;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .group:hover {
+            /*  background-color: #efefff; */
+            background-color: #f8f8f8;
+
+        }
+
+        .group:visited {
+            background-color: green;
+        }
+
+        .group .group-pic {
+            border-radius: 50%;
+            background-color: #ddd;
+            width: 35px;
+
+        }
+
+        .content .friends-list div.active {
+            background-color: #e8ebea;
+        }
+
+        .group h5 {
+            display: inline-block;
+            position: absolute;
+            top: 10px;
+            left: 53px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h3>FakeNews Boost</h3>
+            <span class="friend-name">Nome do Usuario</span>
+            <button class="btn-login">Entrar</button>
+        </header>
+        <div class="content">
+            <section class="friends-list">
+                <!-- nome de grupo grande quebra o layout -->
+                <!-- <div class="group">
+                    <img class="group-pic" src="img/group-icon.png">
+                    <h5>Grupo dos amigos</h5>
+                </div>
+                <div class="group">
+                    <img class="group-pic" src="img/group-icon.png">
+                    <h5>Racha</h5>
+                </div> -->
+            </section>
+            <section class="messages">
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+                <h2>Ola</h2>
+            </section>
+        </div>
+    </div>
+    <script>
+        let groups = [
+            {
+                grupo: "Grupo da Família",
+                mensagens: [
+                    {
+                        usuario: "joao02",
+                        texto: "Tudo bem?"
+                    },
+                    {
+                        usuario: "victor23",
+                        texto: "Tudo tranqs"
+                    },
+                    {
+                        usuario: "joao02",
+                        texto: "Q bom"
+                    }
+                ]
+            },
+            {
+                grupo: "Churrascao no domingao da zueira parte 2 so fera bixo",
+                mensagens: [
+                    {
+                        usuario: "maria2000",
+                        texto: "Na paz?"
+                    },
+                    {
+                        usuario: "victor23",
+                        texto: "Show"
+                    },
+                    {
+                        usuario: "maria2000",
+                        texto: "Q bom"
+                    }
+                ]
+            },
+            {
+                grupo: "Só topzera",
+                mensagens: [
+                    {
+                        usuario: "victor23",
+                        texto: "bom?"
+                    },
+                    {
+                        usuario: "robson_alves",
+                        texto: "Tudo bom"
+                    },
+                    {
+                        usuario: "victor23",
+                        texto: "Q bom"
+                    }
+                ]
+            }
+        ];
+
+        function createGroups() {
+            let listGroupsDiv = document.querySelector(".friends-list");
+            groups.forEach(group => {
+                let groupDiv = document.createElement("div");
+                groupDiv.classList.add("group");
+
+                let pic = document.createElement("img");
+                pic.classList.add("group-pic");
+                pic.src = "img/group-icon.png";
+
+                let groupName = document.createElement("h5");
+                let name = document.createTextNode(group.grupo);
+                groupName.appendChild(name);
+
+                groupDiv.appendChild(pic);
+                groupDiv.appendChild(groupName);
+
+                listGroupsDiv.appendChild(groupDiv);
+            });
+        }
+
+        createGroups();
+        /* renderMessages(group);
+        toggleActiveChat(); 
+        updateCurrentChat()*/
+
+        let currentChatUser = document.querySelector(".friend-name");
+
+        let listGroups = document.querySelectorAll(".group");
+        listGroups.forEach(group => {
+            group.addEventListener("click", function () {
+                let name = group.childNodes[1].innerHTML;
+                currentChatUser.innerHTML = name;
+                console.log(name);
+                currentGroupActive = document.querySelector(".active");
+                if (currentGroupActive !== null) {
+                    currentGroupActive.classList.toggle("active");
+                }
+
+                group.classList.toggle("active");
+            })
+        });
+
+
+    </script>
+</body>
+
+</html>
