@@ -1,81 +1,58 @@
-let groups = [
-  {
-    grupo: "Grupo da Família",
-    mensagens: [
-      {
-        usuario: "joao03",
-        texto: "Tudo bem?"
-      },
-      {
-        usuario: "victor23",
-        texto: "Tudo tranqs"
-      },
-      {
-        usuario: "joao03",
-        texto: "Q bom"
-      }
-    ]
-  },
-  {
-    grupo: "Churrascao no domingao",
-    mensagens: [
-      {
-        usuario: "maria2000",
-        texto: "Na paz?"
-      },
-      {
-        usuario: "victor23",
-        texto: "Show"
-      },
-      {
-        usuario: "maria2000",
-        texto: "Q bom"
-      }
-    ]
-  },
-  {
-    grupo: "Só topzera",
-    mensagens: [
-      {
-        usuario: "victor23",
-        texto: "bom?"
-      },
-      {
-        usuario: "robson_alves",
-        texto: "Tudo bom"
-      },
-      {
-        usuario: "victor23",
-        texto: "Q bom"
-      }
-    ]
-  }
-];
+let groups = [];
 
+const API_URL = "http://rest.learncode.academy/api/bertoldo";
 let currentChatUser = document.querySelector(".friend-name");
-createGroups();
 
 function createGroups() {
   let listGroupsDiv = document.querySelector(".friends-list");
-  groups.forEach(group => {
-    let groupDiv = document.createElement("div");
-    groupDiv.classList.add("group");
 
-    let pic = document.createElement("img");
-    pic.classList.add("group-pic");
-    pic.src = "img/group-icon.png";
+  if (groups.length > 0) {
+    groups.forEach(group => {
+      let groupDiv = document.createElement("div");
+      groupDiv.classList.add("group");
 
-    let groupName = document.createElement("h5");
-    let name = document.createTextNode(group.grupo);
-    groupName.appendChild(name);
+      let pic = document.createElement("img");
+      pic.classList.add("group-pic");
+      pic.src = "img/group-icon.png";
 
-    groupDiv.appendChild(pic);
-    groupDiv.appendChild(groupName);
+      let groupName = document.createElement("h5");
+      let name = document.createTextNode(group.groupName);
+      groupName.appendChild(name);
 
-    setClickListener(groupDiv, group);
+      groupDiv.appendChild(pic);
+      groupDiv.appendChild(groupName);
 
-    listGroupsDiv.appendChild(groupDiv);
-  });
+      setClickListener(groupDiv, group);
+
+      listGroupsDiv.appendChild(groupDiv);
+    });
+  }
+}
+
+function getGroups() {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", API_URL + "/groups", true);
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      groups = JSON.parse(this.response);
+      createGroups();
+    }
+  };
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.send();
+}
+
+function getMessages(groupID) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", `${API_URL}/${groupID}`, true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      let messages = JSON.parse(this.response);
+      messages.forEach(message => createPanelMessage(message));
+    }
+  };
+  xhr.send();
 }
 
 function setClickListener(groupDiv, group) {
@@ -83,7 +60,8 @@ function setClickListener(groupDiv, group) {
     toggleGroupActive(groupDiv);
     setGroupName(groupDiv);
     clearMessagesSection();
-    group.mensagens.forEach(message => createPanelMessage(message));
+    setGroupName(groupDiv);
+    getMessages(group.groupID);
   });
 }
 
@@ -95,12 +73,12 @@ function createPanelMessage(user) {
 
   let panelTitle = document.createElement("div");
   let title = document.createElement("h5");
-  title.innerHTML = user.usuario;
+  title.innerHTML = user.userName;
   panelTitle.classList.add("panel-heading");
   panelTitle.appendChild(title);
 
   let panelBody = document.createElement("div");
-  panelBody.innerHTML = user.texto;
+  panelBody.innerHTML = user.message;
   panelBody.classList.add("panel-body");
 
   panel.appendChild(panelTitle);
@@ -127,3 +105,5 @@ function toggleGroupActive(group) {
 
   group.classList.toggle("active");
 }
+
+getGroups();
