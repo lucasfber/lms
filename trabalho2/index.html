@@ -10,19 +10,44 @@
 </head>
 
 <body>
+    <div class="modal" id="modal">
+        <div class="form-wrapper">
+            <form id="form-login">
+                <input type="text" class="userId" name="userID" placeholder="Informe seu login">
+                <button class="btnFormLogin" type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
     <div class="container">
         <header class="header">
             <h3>Fake Messenger</h3>
             <span class="friend-name">Nome do Usuario</span>
-            <button class="btn-login">Entrar</button>
+            <button class="btn-login">Login</button>
+            <button class="btn-logout">Logout</button>
         </header>
         <div class="content">
-            <section class="friends-list">
-            </section>
+            <div class="group-wrapper">
+                <section class="friends-list">
+                </section>
+                <form class="form-create-group">
+                    <input type="text" id="groupNameInput" placeholder="Nome do grupo" class="formNewGroupInput">
+                    <input type="text" id="groupIdInput" placeholder="ID do grupo" class="formNewGroupInput">
+                    <button type="submit" class="btnNewGroup">Criar Novo Grupo</button>
+                </form>
+            </div>
+
+
             <section class="messages">
+                <!-- <div class="chat-wrapper">
+                    <form id="chat-form">
+                        <input type="text" name="messageUser" id="messageUser" class="messageUser" placeholder="Digite sua mensagem...">
+                        <button type="submit" class="btnSend">Enviar</button>
+                    </form>
+                </div> -->
             </section>
         </div>
     </div>
+
     <script src="js/script.js"></script>
 </body>
 

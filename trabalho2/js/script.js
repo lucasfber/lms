@@ -2,6 +2,43 @@ let groups = [];
 
 const API_URL = "http://rest.learncode.academy/api/bertoldo";
 let currentChatUser = document.querySelector(".friend-name");
+let modalLogin = document.querySelector(".modal");
+let btnFormLogin = document.querySelector(".btnFormLogin");
+let modalFormLogin = document.querySelector("#form-login");
+let btnLogin = document.querySelector(".btn-login");
+let btnLogout = document.querySelector(".btn-logout");
+/* let btnSendMessage = document.querySelector(".btnSend"); */
+
+let currentUser = null;
+
+/* btnSendMessage.addEventListener("click", function() {
+  sendMessage("groupfamilia");
+}); */
+
+btnLogout.addEventListener("click", function() {
+  logout();
+});
+
+function checkUserLogin() {
+  hasUserLoged() === null
+    ? btnLogout.classList.toggle("hide-button")
+    : btnLogin.classList.toggle("hide-button");
+}
+
+function logout() {
+  localStorage.removeItem("user");
+}
+
+modalFormLogin.addEventListener("submit", function(e) {
+  e.preventDefault();
+  currentUser = document.querySelector(".userId").value;
+
+  addUserToLocalStorage(currentUser);
+});
+
+function addUserToLocalStorage(userID) {
+  localStorage.setItem("user", userID);
+}
 
 function createGroups() {
   let listGroupsDiv = document.querySelector(".friends-list");
@@ -25,6 +62,8 @@ function createGroups() {
       setClickListener(groupDiv, group);
 
       listGroupsDiv.appendChild(groupDiv);
+
+      createChatForm(group.groupID);
     });
   }
 }
@@ -66,6 +105,7 @@ function setClickListener(groupDiv, group) {
 }
 
 function createPanelMessage(user) {
+  console.log("Quando isso é chamdo?");
   let messagesSection = document.querySelector(".messages");
 
   let panel = document.createElement("div");
@@ -87,6 +127,54 @@ function createPanelMessage(user) {
   messagesSection.appendChild(panel);
 }
 
+function sendMessage(groupID, message) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${API_URL}/${groupID}`, true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      console.log("Deu certo", this.response);
+    }
+  };
+  xhr.send(
+    JSON.stringify({ userName: localStorage.getItem("user"), message: message })
+  );
+}
+
+function createChatForm(groupID) {
+  let messagesSection = document.querySelector(".messages");
+
+  let chatWrapper = document.createElement("div");
+  chatWrapper.classList.add("chat-wrapper");
+
+  let formMessage = document.createElement("form");
+  formMessage.id = "chat-form";
+
+  let inputMessage = document.createElement("input");
+  inputMessage.type = "text";
+  inputMessage.id = "messageUser";
+  inputMessage.placeholder = "Digite sua mensagem!!!!!!!";
+  inputMessage.classList.add("messageUser");
+
+  formMessage.addEventListener("submit", function(e) {
+    e.preventDefault();
+    message = inputMessage.value;
+    sendMessage(groupID, message);
+  });
+
+  let buttonSend = document.createElement("button");
+  buttonSend.type = "submit";
+  buttonSend.innerHTML = "Enviar";
+  buttonSend.classList.add("btnSend");
+
+  formMessage.appendChild(inputMessage);
+  formMessage.appendChild(buttonSend);
+
+  chatWrapper.appendChild(formMessage);
+
+  messagesSection.appendChild(chatWrapper);
+}
+
 function setGroupName(group) {
   let name = group.childNodes[1].innerHTML;
   currentChatUser.innerHTML = name;
@@ -106,4 +194,31 @@ function toggleGroupActive(group) {
   group.classList.toggle("active");
 }
 
+function setButtonLogin() {
+  console.log("Ta chamando?");
+  btnLogin.addEventListener("click", function() {
+    openModal();
+  });
+}
+
+function closeModal(e) {
+  if (e.target.id === "modal") {
+    modalLogin.style.display = "none";
+  }
+}
+
+function hasUserLoged() {
+  return localStorage.getItem("user");
+}
+
+function openModal() {
+  modalLogin.style.display = "block";
+  modalLogin.addEventListener("click", closeModal);
+}
+
 getGroups();
+
+hasUserLoged();
+
+checkUserLogin();
+setButtonLogin();

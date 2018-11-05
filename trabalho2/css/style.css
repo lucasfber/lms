@@ -5,11 +5,16 @@
   font-family: "Helvetica", sans-serif;
 }
 
+.hide-button {
+  display: none;
+}
+
 .container {
   width: 900px;
   margin: 0 auto;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  z-index: 1;
 }
 
 clearfix::after {
@@ -20,7 +25,7 @@ clearfix::after {
 
 .content {
   overflow: auto;
-  background-color: purple;
+  background-color: rgb(235, 232, 232);
 }
 
 .header {
@@ -33,21 +38,23 @@ clearfix::after {
 .header h3 {
   float: left;
   border-right: 1px solid #80888b;
-  padding: 10px 50px 10px 10px;
+  padding: 10px 54px 10px 10px;
+}
+
+.group-wrapper {
+  float: left;
+  width: 25%;
 }
 
 .friends-list {
   background-color: #fff;
-  width: 25%;
-  float: left;
-  height: 100vh;
 }
 
 .messages {
   background-color: #e3d9d1;
   width: 75%;
   float: right;
-  height: 100vh;
+  height: 641px;
 }
 
 .container .header .friend-name {
@@ -55,7 +62,20 @@ clearfix::after {
   font-size: 20px;
   margin-left: 20px;
 }
-
+.container .header .btn-logout {
+  border: none;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 5px;
+  user-select: none;
+  outline: 0;
+  float: right;
+  position: relative;
+  top: 8px;
+  background-color: #e22626;
+  right: 20px;
+  color: #fff;
+}
 .container .header .btn-login {
   border: none;
   font-size: 12px;
@@ -133,4 +153,131 @@ clearfix::after {
   background-color: #fff;
   padding: 10px 7px;
   border-radius: 0 0 5px 5px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 40px;
+  text-align: center;
+  display: none;
+}
+.modal #form-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+}
+.modal #form-login .userId {
+  width: 540px;
+  padding: 10px;
+  font-size: 20px;
+  color: #504f4f;
+  border: none;
+  /* border-left: 1px;
+  border-bottom: 1px;
+  border-top: 1px;
+  border-right: none; */
+  border-color: #ccc;
+  /* border-style: solid; */
+  border-radius: 3px 0 0 3px;
+  outline-color: #ccc;
+}
+
+.btnFormLogin {
+  position: relative;
+  left: -11px;
+  top: -1px;
+  background-color: #33de3e;
+  padding: 12px 11px 12px 12px;
+  border: none;
+  border-radius: 0 3px 3px 0;
+  margin-left: 0;
+  font-size: 17px;
+  font-weight: bolder;
+  color: #fff;
+  outline: none;
+}
+
+.btnFormLogin:active {
+  background-color: #2dbe36;
+}
+
+.form-wrapper {
+  width: 800px;
+  background-color: rgb(31, 143, 16);
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  border-radius: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chat-wrapper {
+  position: absolute;
+  bottom: -63px;
+  width: 673px;
+  background-color: red;
+}
+
+.chat-wrapper #messageUser {
+  padding: 10px;
+  width: 91%;
+  color: #222;
+  font-size: 14px;
+}
+
+.chat-wrapper .btnSend {
+  position: absolute;
+  right: 0;
+  width: 9%;
+  border: none;
+  user-select: none;
+  padding: 11px;
+  height: 40px;
+  background-color: rgb(156, 155, 155);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-create-group {
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.btnNewGroup {
+  border: none;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 5px;
+  user-select: none;
+  outline: 0;
+  margin-top: 5px;
+  background-color: #3cc6f0;
+  color: #fff;
+}
+
+.formNewGroupInput {
+  width: 200px;
+  padding: 10px;
+  font-size: 12px;
+  color: #504f4f;
+  border: 1px solid #ccc;
+  margin-bottom: 3px;
+  /* border-left: 1px;
+  border-bottom: 1px;
+  border-top: 1px;
+  border-right: none; */
+  border-color: #ccc;
+  /* border-style: solid; */
+  border-radius: 5px 0 0 3px;
+  outline-color: #ccc;
 }
