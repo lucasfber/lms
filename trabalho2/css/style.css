@@ -50,10 +50,16 @@ clearfix::after {
   background-color: #fff;
 }
 
+.message-wrapper {
+  float: right;
+  background: pink;
+  width: 75%;
+}
+
 .messages {
   background-color: #e3d9d1;
-  width: 75%;
-  float: right;
+  /* width: 75%; */
+  border: 2px solid green;
   height: 641px;
 }
 
@@ -226,20 +232,18 @@ clearfix::after {
   background-color: red;
 }
 
-.chat-wrapper #messageUser {
+.chat-form #messageUser {
   padding: 10px;
-  width: 91%;
+  width: 90%;
   color: #222;
   font-size: 14px;
 }
 
-.chat-wrapper .btnSend {
-  position: absolute;
-  right: 0;
-  width: 9%;
+.chat-form .btnSend {
   border: none;
   user-select: none;
   padding: 11px;
+  width: 10%;
   height: 40px;
   background-color: rgb(156, 155, 155);
   color: #fff;

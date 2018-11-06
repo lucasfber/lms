@@ -81,6 +81,8 @@ modalFormLogin.addEventListener("submit", function(e) {
   currentUser = document.querySelector(".userId").value;
 
   addUserToLocalStorage(currentUser);
+  console.log("entrou aqui");
+  modalLogin.style.display = "none";
 });
 
 function addUserToLocalStorage(userID) {
@@ -178,7 +180,39 @@ function sendMessage(groupID, message) {
 }
 
 function createChatForm(groupID) {
-  let messagesSection = document.querySelector(".messages");
+  let messageWrapper = document.querySelector(".message-wrapper");
+
+  let formMessage = document.createElement("form");
+  formMessage.classList.add("chat-form");
+  formMessage.id = "chat-form";
+
+  let inputMessage = document.createElement("input");
+  inputMessage.type = "text";
+  inputMessage.id = "messageUser";
+  inputMessage.placeholder = "Digite sua mensagem";
+  inputMessage.classList.add("messageUser");
+
+  formMessage.addEventListener("submit", function(e) {
+    e.preventDefault();
+    message = inputMessage.value;
+    inputMessage.value = "";
+
+    sendMessage(groupID, message);
+    let messagesSection = document.querySelector(".messages");
+    messagesSection.innerHTML = "";
+    getMessages(groupID);
+  });
+
+  let buttonSend = document.createElement("button");
+  buttonSend.type = "submit";
+  buttonSend.innerHTML = "Enviar";
+  buttonSend.classList.add("btnSend");
+
+  formMessage.appendChild(inputMessage);
+  formMessage.appendChild(buttonSend);
+
+  messageWrapper.appendChild(formMessage);
+  /* let messagesSection = document.querySelector(".messages");
 
   let chatWrapper = document.createElement("div");
   chatWrapper.classList.add("chat-wrapper");
@@ -208,7 +242,7 @@ function createChatForm(groupID) {
 
   chatWrapper.appendChild(formMessage);
 
-  messagesSection.appendChild(chatWrapper);
+  messagesSection.appendChild(chatWrapper); */
 }
 
 function setGroupName(group) {
