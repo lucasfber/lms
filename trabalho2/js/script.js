@@ -1,4 +1,4 @@
-let groups = [];
+// let groups = [];
 
 const API_URL = "http://rest.learncode.academy/api/bertoldo";
 let currentChatUser = document.querySelector(".friend-name");
@@ -7,6 +7,8 @@ let btnFormLogin = document.querySelector(".btnFormLogin");
 let modalFormLogin = document.querySelector("#form-login");
 let btnLogin = document.querySelector(".btn-login");
 let btnLogout = document.querySelector(".btn-logout");
+let formNewGroup = document.querySelector(".form-create-group");
+
 /* let btnSendMessage = document.querySelector(".btnSend"); */
 
 let currentUser = null;
@@ -29,6 +31,51 @@ function logout() {
   localStorage.removeItem("user");
 }
 
+formNewGroup.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const groupName = e.target.groupName.value;
+  const groupID = e.target.groupID.value;
+
+  const group = {
+    groupName: groupName,
+    groupID: groupID
+  };
+
+  console.log(groupName, groupID);
+  e.target.groupName.value = "";
+  e.target.groupID.value = "";
+
+  createNewGroup(group);
+});
+
+function createNewGroup(group) {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("POST", `${API_URL}/groups`, true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      getGroups();
+    }
+  };
+  xhr.send(JSON.stringify(group));
+}
+
+function getGroups() {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", API_URL + "/groups", true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let groups = [];
+      groups = JSON.parse(this.response);
+      createGroups(groups);
+    }
+  };
+
+  xhr.send();
+}
+
 modalFormLogin.addEventListener("submit", function(e) {
   e.preventDefault();
   currentUser = document.querySelector(".userId").value;
@@ -40,8 +87,10 @@ function addUserToLocalStorage(userID) {
   localStorage.setItem("user", userID);
 }
 
-function createGroups() {
+function createGroups(groups) {
+  console.log(groups);
   let listGroupsDiv = document.querySelector(".friends-list");
+  listGroupsDiv.innerHTML = "";
 
   if (groups.length > 0) {
     groups.forEach(group => {
@@ -66,19 +115,6 @@ function createGroups() {
       createChatForm(group.groupID);
     });
   }
-}
-
-function getGroups() {
-  let xhr = new XMLHttpRequest();
-  xhr.open("GET", API_URL + "/groups", true);
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      groups = JSON.parse(this.response);
-      createGroups();
-    }
-  };
-  xhr.setRequestHeader("Content-type", "application/json");
-  xhr.send();
 }
 
 function getMessages(groupID) {
@@ -153,7 +189,7 @@ function createChatForm(groupID) {
   let inputMessage = document.createElement("input");
   inputMessage.type = "text";
   inputMessage.id = "messageUser";
-  inputMessage.placeholder = "Digite sua mensagem!!!!!!!";
+  inputMessage.placeholder = "Digite sua mensagem";
   inputMessage.classList.add("messageUser");
 
   formMessage.addEventListener("submit", function(e) {
