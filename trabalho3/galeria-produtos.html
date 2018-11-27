@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">
+                <img src="img/logo.jpg" alt="Logo" class="logo">
+              </a>
+            </div>
+          </div>
+          <div class="col-md-5 btn-control-group">
+            <div
+              class="collpase navbar-collapse btn-control-group navbar-controls-wrapper"
+            >
+              <ul class="nav navbar-nav btn-control-group controls">
+                <li class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle dropdown-icon"
+                    data-toggle="dropdown"
+                    role="button"
+                    ><span
+                      class="glyphicon glyphicon-shopping-cart cart-icon"
+                    ></span>
+                    Sua Cesta de Compras</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li>
+                      <div class="my-dropdown">
+                        <div class="product">
+                          <img
+                            src="../img/prod1.jpg"
+                            alt="Product Image"
+                            class="product-thumbnail"
+                          />
+                          <div class="product-price">
+                            <p class="product-name">Nome do Produto</p>
+                            <small class="quantity"
+                              >Quantidade: <span>1</span></small
+                            >
+                            <p class="price">R$ <span>29,90</span></p>
+                          </div>
+                        </div>
+                        <div class="product">
+                          <img
+                            src="img/prod1.jpg"
+                            alt="Product Image"
+                            class="product-thumbnail"
+                          />
+                          <div class="product-price">
+                            <p class="product-name">Nome do Produto</p>
+                            <small class="quantity"
+                              >Quantidade: <span>1</span></small
+                            >
+                            <p class="price">R$ <span>29,90</span></p>
+                          </div>
+                        </div>
+                        <div class="btn-wrapper">
+                          <a
+                            class="btn btn-success btn-finalizar"
+                            href="suas-compras.html"
+                            >Finalizar</a
+                          >
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="btn-logout-wrapper">
+                  <button class="btn btn-danger btn-sm btn-logout">Sair</button>
+                </li>
+
+                <li class="dropdown btn-login-wrapper dropdown-form-login">
+                  <button
+                    class="btn btn-success btn-sm dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                  >
+                    Entrar
+                  </button>
+
+                  <ul class="dropdown-menu form-login-wrapper">
+                    <li>
+                      <div class="my-form-login">
+                        <form action="#" id="formLogin">
+                          <div class="form-group">
+                            <label for="login-input">Login:</label>
+                            <input
+                              type="text"
+                              id="login-input"
+                              class="form-control"
+                              placeholder="login..."
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="login-input">Senha:</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id=""
+                              placeholder="senha..."
+                              required
+                            />
+                          </div>
+                          <button type="submit" class="btn btn-success">
+                            Entrar
+                          </button>
+                        </form>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown btn-login-wrapper dropdown-form-login">
+                  <button
+                    class="btn btn-primary btn-sm dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                  >
+                    Cadastrar
+                  </button>
+
+                  <ul class="dropdown-menu form-login-wrapper">
+                    <li>
+                      <div class="my-form-login">
+                        <form action="#" id="formNewUser">
+                          <div class="form-group">
+                            <label for="login-input">Login:</label>
+                            <input
+                              type="text"
+                              id="newLogin-input"
+                              class="form-control"
+                              placeholder="login..."
+                              required
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="login-input">Senha:</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="newPassword-input"
+                              placeholder="senha..."
+                              required
+                            />
+                          </div>
+                          <button type="submit" class="btn btn-primary">
+                            Cadastrar
+                          </button>
+                        </form>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapse navbar-collapse"></div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="img/prod1.jpg" alt="..." />
+            <div class="caption">
+              <h3>Game - Red Dead Redemption 2 - PS4</h3>
+              <strong><p>R$ 229,00</p></strong>   
+              <div>
+                <a href="#" class="btn btn-primary btn-sm" role="button"
+                  >Adicionar à Cesta</a
+                >
+                Qtd:
+                <input type="number" class="form-control input-qtd" min="0">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="img/prod2.jpg" alt="..." />
+            <div class="caption">
+              <h3>Game Call of Duty WW II - PS4</h3>
+              <strong><p>R$ 99,00</p></strong>
+              <div>
+                <a href="#" class="btn btn-primary btn-sm" role="button"
+                  >Adicionar à Cesta</a
+                >
+                Qtd:
+                <input type="number" class="form-control input-qtd" min="0">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="img/prod3.jpg" alt="..." />
+            <div class="caption">
+              <h3>Console Xbox One 500GB</h3>
+              <strong><p>R$ 1.620,00</p></strong> 
+              <div>
+                <a href="#" class="btn btn-primary btn-sm" role="button"
+                  >Adicionar à Cesta</a
+                >
+                Qtd:
+                <input type="number" class="form-control input-qtd" min="0">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="img/prod4.jpg" alt="..." />
+            <div class="caption">
+              <h3>Controle sem Fio - Dualshock 4 - PS4</h3>
+              <strong><p>R$ 231,00</p></strong>  
+              <div>
+                <a href="#" class="btn btn-primary btn-sm" role="button"
+                  >Adicionar à Cesta</a
+                >
+                Qtd:
+                <input type="number" class="form-control input-qtd" min="0">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
