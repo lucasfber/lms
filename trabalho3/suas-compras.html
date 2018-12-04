@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Suas Compras</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery.js"></script>
-</body>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/suas-compras.js"></script>
+    <title>GameStore - Suas Compras</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="galeria-produtos.html">
+                    <img src="img/logo.png" alt="Logo" class="logo" />
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-5">
+                  <div class="collpase navbar-collapse btn-control-group">
+                    <ul class="nav navbar-nav btn-control-group controls">
+                        <li class="btn-logout-wrapper">
+                            <button
+                              class="btn btn-danger btn-sm btn-logout"
+                              id="btnLogout"
+                            >
+                              Sair
+                            </button>
+                          </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>  
+          </div>
+      </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div
+            class="alert alert-success alert-dismissible alert-purchase-success"
+            role="alert"
+            id="alert-error-login"
+          >
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Sucesso!</strong> A sua compra foi efetuada com sucesso! <a href="galeria-produtos.html" class="text-primary">Continue Comprando!</a>
+          </div>
+        </div>
+      </div>
+      <h2>Sua Cesta de Compras</h2>
+      <div class="row">
+        <div class="col-md-9">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Descrição</th>
+                    <th>Preço Unitário</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+        </thead>
+            <tbody class="tbody">
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-3 checkout-wrapper">
+        </div>
+      </div>
+
+      <div class="rol">
+        <h3>Compras Efetuadas</h3>
+        <div class="col-md-12" id="purchases-done-wrapper">
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
+    <title>GameStore </title>
     <style></style>
   </head>
   <body>
@@ -15,8 +18,8 @@
         <div class="row">
           <div class="col-md-7">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">
-                <img src="img/logo.jpg" alt="Logo" class="logo">
+              <a class="navbar-brand" href="galeria-produtos.html">
+                <img src="img/logo.png" alt="Logo" class="logo" />
               </a>
             </div>
           </div>
@@ -31,6 +34,7 @@
                     class="dropdown-toggle dropdown-icon"
                     data-toggle="dropdown"
                     role="button"
+                    id="myDropdown"
                     ><span
                       class="glyphicon glyphicon-shopping-cart cart-icon"
                     ></span>
@@ -38,49 +42,29 @@
                   >
                   <ul class="dropdown-menu">
                     <li>
-                      <div class="my-dropdown">
-                        <div class="product">
-                          <img
-                            src="../img/prod1.jpg"
-                            alt="Product Image"
-                            class="product-thumbnail"
-                          />
-                          <div class="product-price">
-                            <p class="product-name">Nome do Produto</p>
-                            <small class="quantity"
-                              >Quantidade: <span>1</span></small
-                            >
-                            <p class="price">R$ <span>29,90</span></p>
-                          </div>
-                        </div>
-                        <div class="product">
-                          <img
-                            src="img/prod1.jpg"
-                            alt="Product Image"
-                            class="product-thumbnail"
-                          />
-                          <div class="product-price">
-                            <p class="product-name">Nome do Produto</p>
-                            <small class="quantity"
-                              >Quantidade: <span>1</span></small
-                            >
-                            <p class="price">R$ <span>29,90</span></p>
-                          </div>
-                        </div>
-                        <div class="btn-wrapper">
-                          <a
-                            class="btn btn-success btn-finalizar"
-                            href="suas-compras.html"
-                            >Finalizar</a
-                          >
-                        </div>
+                      <div class="my-dropdown empty-shopping-basket">
+                        <div class="info-wrapper">
+                            <p class="info-empty">Sua Cesta de Compras está vazia.</p>
+                        </div> 
+                      </div>
+                      <div class="btn-wrapper">
+                        <a
+                          class="btn btn-success btn-finalizar"
+                          href="suas-compras.html"
+                          >Finalizar</a
+                        >
                       </div>
                     </li>
                   </ul>
                 </li>
 
                 <li class="btn-logout-wrapper">
-                  <button class="btn btn-danger btn-sm btn-logout">Sair</button>
+                  <button
+                    class="btn btn-danger btn-sm btn-logout"
+                    id="btnLogout"
+                  >
+                    Sair
+                  </button>
                 </li>
 
                 <li class="dropdown btn-login-wrapper dropdown-form-login">
@@ -88,6 +72,7 @@
                     class="btn btn-success btn-sm dropdown-toggle"
                     data-toggle="dropdown"
                     role="button"
+                    id="btnSignIn"
                   >
                     Entrar
                   </button>
@@ -111,7 +96,7 @@
                             <input
                               type="password"
                               class="form-control"
-                              id=""
+                              id="password-input"
                               placeholder="senha..."
                               required
                             />
@@ -130,6 +115,7 @@
                     class="btn btn-primary btn-sm dropdown-toggle"
                     data-toggle="dropdown"
                     role="button"
+                    id="btnSignUp"
                   >
                     Cadastrar
                   </button>
@@ -169,89 +155,70 @@
               </ul>
             </div>
           </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div
+                  class="alert alert-danger alert-dismissible"
+                  role="alert"
+                  id="alert-error-login"
+                >
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Erro!</strong> O Login ou Senha estão incorretos! Por
+                  favor, tente novamente.
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div
+                  class="alert alert-danger alert-dismissible"
+                  role="alert"
+                  id="alert-login-exists"
+                >
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Erro!</strong> O Login escolhido já existe! Por favor
+                  escolha outro nome de usuário e tente novamente.
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div
+                  class="alert alert-success alert-dismissible"
+                  role="alert"
+                  id="alert-success-signup"
+                >
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>Sucesso!</strong> Cadastro efetuado com sucesso!
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="collapse navbar-collapse"></div>
-        <!-- /.navbar-collapse -->
       </div>
-      <!-- /.container-fluid -->
+
     </nav>
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <img src="img/prod1.jpg" alt="..." />
-            <div class="caption">
-              <h3>Game - Red Dead Redemption 2 - PS4</h3>
-              <strong><p>R$ 229,00</p></strong>   
-              <div>
-                <a href="#" class="btn btn-primary btn-sm" role="button"
-                  >Adicionar à Cesta</a
-                >
-                Qtd:
-                <input type="number" class="form-control input-qtd" min="0">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <img src="img/prod2.jpg" alt="..." />
-            <div class="caption">
-              <h3>Game Call of Duty WW II - PS4</h3>
-              <strong><p>R$ 99,00</p></strong>
-              <div>
-                <a href="#" class="btn btn-primary btn-sm" role="button"
-                  >Adicionar à Cesta</a
-                >
-                Qtd:
-                <input type="number" class="form-control input-qtd" min="0">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <img src="img/prod3.jpg" alt="..." />
-            <div class="caption">
-              <h3>Console Xbox One 500GB</h3>
-              <strong><p>R$ 1.620,00</p></strong> 
-              <div>
-                <a href="#" class="btn btn-primary btn-sm" role="button"
-                  >Adicionar à Cesta</a
-                >
-                Qtd:
-                <input type="number" class="form-control input-qtd" min="0">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <img src="img/prod4.jpg" alt="..." />
-            <div class="caption">
-              <h3>Controle sem Fio - Dualshock 4 - PS4</h3>
-              <strong><p>R$ 231,00</p></strong>  
-              <div>
-                <a href="#" class="btn btn-primary btn-sm" role="button"
-                  >Adicionar à Cesta</a
-                >
-                Qtd:
-                <input type="number" class="form-control input-qtd" min="0">
-              </div>
-            </div>
-          </div>
-        </div>
-        
+      <div class="row" id="products-section">
       </div>
-    </div>
-
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
   </body>
 </html>
